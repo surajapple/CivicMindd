@@ -1,0 +1,12 @@
+{
+  "name": "civicmind",
+  "version": "1.0.0",
+  "description": "CivicMind - Election Education Assistant",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
