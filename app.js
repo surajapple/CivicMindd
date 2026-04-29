@@ -7,7 +7,7 @@
 
 // ─── CONFIG ─────────────────────────────────────────────────
 const CONFIG = {
-  GEMINI_API_KEY: 'AIzaSyA-lt49QIWagOaFomzpr30-duynkjaqCGY',
+  GEMINI_API_KEY: process.env.GEMINI_API_KEY,
   CIVIC_API_KEY: 'YOUR_CIVIC_API_KEY',     // Google Civic Info API
   CALENDAR_API_KEY: 'YOUR_CALENDAR_KEY',   // Google Calendar API
   CIVIC_BASE: 'https://www.googleapis.com/civicinfo/v2',
@@ -75,18 +75,18 @@ If you cannot answer accurately, say so and direct to vote.gov or the user's sta
 
 // ─── DOM REFS ─────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
-const splashScreen   = $('splash-screen');
-const app            = $('app');
-const startBtn       = $('startBtn');
-const chatContainer  = $('chatContainer');
-const userInput      = $('userInput');
-const sendBtn        = $('sendBtn');
-const charCount      = $('charCount');
-const typingIndicator= $('typingIndicator');
+const splashScreen = $('splash-screen');
+const app = $('app');
+const startBtn = $('startBtn');
+const chatContainer = $('chatContainer');
+const userInput = $('userInput');
+const sendBtn = $('sendBtn');
+const charCount = $('charCount');
+const typingIndicator = $('typingIndicator');
 const jurisdictionText = $('jurisdictionText');
-const sidebarEl      = $('sidebar');
-const sidebarToggle  = $('sidebarToggle');
-const mobileMenuBtn  = $('mobileMenuBtn');
+const sidebarEl = $('sidebar');
+const sidebarToggle = $('sidebarToggle');
+const mobileMenuBtn = $('mobileMenuBtn');
 
 // ─── SPLASH → APP ─────────────────────────────────────────────
 startBtn.addEventListener('click', () => {
@@ -130,13 +130,13 @@ document.querySelectorAll('.topic-btn').forEach(btn => {
 
 function updateTopicHeader(topic) {
   const map = {
-    general:      ['Election Education Chat', 'Ask me anything about voting and elections'],
+    general: ['Election Education Chat', 'Ask me anything about voting and elections'],
     registration: ['Voter Registration', 'Eligibility, deadlines, and how to register'],
-    timeline:     ['Election Timelines', 'Key dates for primaries, general elections, and more'],
-    voting:       ['Voting Process', 'Polling places, early voting, mail-in ballots'],
-    ballot:       ['Ballot Guide', 'How to read and understand your ballot'],
-    results:      ['Results & Certification', 'How votes are counted and when results are final'],
-    civics:       ['Civics 101', 'Electoral college, redistricting, campaign finance'],
+    timeline: ['Election Timelines', 'Key dates for primaries, general elections, and more'],
+    voting: ['Voting Process', 'Polling places, early voting, mail-in ballots'],
+    ballot: ['Ballot Guide', 'How to read and understand your ballot'],
+    results: ['Results & Certification', 'How votes are counted and when results are final'],
+    civics: ['Civics 101', 'Electoral college, redistricting, campaign finance'],
   };
   $('currentTopicTitle').textContent = map[topic]?.[0] || 'Election Education Chat';
   $('currentTopicSubtitle').textContent = map[topic]?.[1] || 'Ask me anything about voting and elections';
@@ -193,7 +193,7 @@ function sendMessage(text) {
 function sanitizeInput(text) {
   if (!text || text.length > CONFIG.MAX_INPUT) return false;
   // Block obvious prompt injections
-  const injections = ['ignore previous instructions','forget your instructions','you are now','act as ','jailbreak','DAN '];
+  const injections = ['ignore previous instructions', 'forget your instructions', 'you are now', 'act as ', 'jailbreak', 'DAN '];
   if (injections.some(p => text.toLowerCase().includes(p))) {
     appendBotMessage({
       answer: "I'm only able to help with election education questions.",
@@ -259,7 +259,7 @@ function parseGeminiResponse(raw) {
   try {
     const jsonMatch = raw.match(/\{[\s\S]*\}/);
     if (jsonMatch) return JSON.parse(jsonMatch[0]);
-  } catch (_) {}
+  } catch (_) { }
   // Fallback plain text
   return {
     answer: raw || 'I wasn\'t able to get a clear answer. Please try again or visit vote.gov.',
@@ -529,7 +529,7 @@ document.querySelectorAll('.quick-topic').forEach(btn => {
 
 // ─── UTILS ───────────────────────────────────────────────────
 function escHtml(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 function escAttr(s) { return escHtml(s); }
 
