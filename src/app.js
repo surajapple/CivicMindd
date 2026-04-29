@@ -647,3 +647,5 @@ function scrollBottom() {
 void fetchElectionInfo;
 void fetchVoterInfo;
 //This is for deploying
+
+//Added package
