@@ -1,8 +1,31 @@
-.git
+# Dependencies
+node_modules/
+
+# Environment secrets
+.env
+.env.*
+
+# Test and dev artifacts
+tests/
+coverage/
+.eslintrc.json
+*.test.js
+
+# Documentation
+*.md
+
+# Git
+.git/
 .gitignore
-README.md
-walkthrough.md
-task.md
-implementation_plan.md
-Dockerfile
-.dockerignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Editor
+.vscode/
+.idea/
