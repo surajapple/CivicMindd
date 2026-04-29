@@ -26,18 +26,18 @@ const state = {
 
 // ─── DOM REFS ─────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
-const splashScreen    = $('splash-screen');
-const app             = $('app');
-const startBtn        = $('startBtn');
-const chatContainer   = $('chatContainer');
-const userInput       = $('userInput');
-const sendBtn         = $('sendBtn');
-const charCount       = $('charCount');
+const splashScreen = $('splash-screen');
+const app = $('app');
+const startBtn = $('startBtn');
+const chatContainer = $('chatContainer');
+const userInput = $('userInput');
+const sendBtn = $('sendBtn');
+const charCount = $('charCount');
 const typingIndicator = $('typingIndicator');
 const jurisdictionText = $('jurisdictionText');
-const sidebarEl       = $('sidebar');
-const sidebarToggle   = $('sidebarToggle');
-const mobileMenuBtn   = $('mobileMenuBtn');
+const sidebarEl = $('sidebar');
+const sidebarToggle = $('sidebarToggle');
+const mobileMenuBtn = $('mobileMenuBtn');
 
 // ─── ACCESSIBILITY HELPERS (inline; no ES module import needed) ─
 /**
@@ -91,13 +91,13 @@ document.querySelectorAll('.topic-btn').forEach(btn => {
     updateTopicHeader(btn.dataset.topic);
 
     const topicPrompts = {
-      general:      null,
+      general: null,
       registration: 'How do I register to vote?',
-      timeline:     'What are the key election dates and timelines?',
-      voting:       'How does the voting process work?',
-      ballot:       'How do I read and understand my ballot?',
-      results:      'How are votes counted and results certified?',
-      civics:       'Can you give me a civics overview — electoral college, redistricting?',
+      timeline: 'What are the key election dates and timelines?',
+      voting: 'How does the voting process work?',
+      ballot: 'How do I read and understand my ballot?',
+      results: 'How are votes counted and results certified?',
+      civics: 'Can you give me a civics overview — electoral college, redistricting?',
     };
     if (topicPrompts[btn.dataset.topic]) {
       sendMessage(topicPrompts[btn.dataset.topic]);
@@ -111,13 +111,13 @@ document.querySelectorAll('.topic-btn').forEach(btn => {
  */
 function updateTopicHeader(topic) {
   const map = {
-    general:      ['Election Education Chat', 'Ask me anything about voting and elections'],
+    general: ['Election Education Chat', 'Ask me anything about voting and elections'],
     registration: ['Voter Registration', 'Eligibility, deadlines, and how to register'],
-    timeline:     ['Election Timelines', 'Key dates for primaries, general elections, and more'],
-    voting:       ['Voting Process', 'Polling places, early voting, mail-in ballots'],
-    ballot:       ['Ballot Guide', 'How to read and understand your ballot'],
-    results:      ['Results & Certification', 'How votes are counted and when results are final'],
-    civics:       ['Civics 101', 'Electoral college, redistricting, campaign finance'],
+    timeline: ['Election Timelines', 'Key dates for primaries, general elections, and more'],
+    voting: ['Voting Process', 'Polling places, early voting, mail-in ballots'],
+    ballot: ['Ballot Guide', 'How to read and understand your ballot'],
+    results: ['Results & Certification', 'How votes are counted and when results are final'],
+    civics: ['Civics 101', 'Electoral college, redistricting, campaign finance'],
   };
   $('currentTopicTitle').textContent = map[topic]?.[0] || 'Election Education Chat';
   $('currentTopicSubtitle').textContent = map[topic]?.[1] || 'Ask me anything about voting and elections';
@@ -646,3 +646,4 @@ function scrollBottom() {
 // Suppress unused-variable warnings for functions available globally for testing
 void fetchElectionInfo;
 void fetchVoterInfo;
+//This is for deploying
